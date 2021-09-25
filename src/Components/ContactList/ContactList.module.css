@@ -1,0 +1,10 @@
+.contactList__item {
+  margin-bottom: 20px;
+}
+.contactList__name {
+  margin-right: 20px;
+  font-weight: 500;
+}
+.contactList__number {
+  margin-right: 20px;
+}
