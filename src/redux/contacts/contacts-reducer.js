@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-// import types from './contacts-types';
 import actions from './contacts-actions';
 import {
   onDeleteNotification,
