@@ -8,10 +8,21 @@ import ReactNotifications from 'react-notifications-component';
 import s from './../src/Components/Container/Container.module.css';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import contactsActions from './redux/contacts/contacts-actions';
 
-const App = ({ contacts, filter, addItem, onDeleteContact }) => {
+// const App = ({ contacts, filter, addItem, onDeleteContact }) => {
+const App = () => {
+  // mapStateToProps alt:
+  const contacts = useSelector(state => state.contacts.items);
+  const filter = useSelector(state => state.contacts.filter);
+
+  // mapDispatchToProps alt:
+  const dispatch = useDispatch();
+  const addItem = item => dispatch(contactsActions.addContact(item));
+  const onDeleteContact = item => dispatch(contactsActions.deleteContact(item));
+
   const getFilteredResult = (contacts, filter) => {
     return contacts.filter(contact => {
       return contact.name.toLowerCase().includes(filter);
@@ -37,14 +48,15 @@ const App = ({ contacts, filter, addItem, onDeleteContact }) => {
   );
 };
 
-const mapStateToProps = ({ contacts: { items, filter } }) => ({
-  contacts: items,
-  filter: filter,
-});
+// const mapStateToProps = ({ contacts: { items, filter } }) => ({
+//   contacts: items,
+//   filter: filter,
+// });
 
-const mapDispatchToProps = dispatch => ({
-  addItem: item => dispatch(contactsActions.addContact(item)),
-  onDeleteContact: item => dispatch(contactsActions.deleteContact(item)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   addItem: item => dispatch(contactsActions.addContact(item)),
+//   onDeleteContact: item => dispatch(contactsActions.deleteContact(item)),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

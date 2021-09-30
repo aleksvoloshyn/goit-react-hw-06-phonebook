@@ -1,8 +1,12 @@
 import s from './Filter.module.css';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import contactsActions from './../../redux/contacts/contacts-actions';
 
-function Filter({ onChange }) {
+// function Filter({ onChange }) {
+function Filter() {
+  const dispatch = useDispatch();
+  const onChange = e => dispatch(contactsActions.filter(e.target.value));
   return (
     <>
       <label htmlFor="">
@@ -21,8 +25,9 @@ function Filter({ onChange }) {
   );
 }
 
-const mapDispatchToProps = dispatch => ({
-  onChange: e => dispatch(contactsActions.filter(e.target.value)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   onChange: e => dispatch(contactsActions.filter(e.target.value)),
+// });
 
-export default connect(null, mapDispatchToProps)(Filter);
+// export default connect(null, mapDispatchToProps)(Filter);
+export default Filter;

@@ -7,7 +7,7 @@ import {
   onErrorNotification,
 } from '../../Components/Notifications/Notifications';
 
-const contactsState = [
+const defaultContacts = [
   { id: 'id-1', name: 'Funny', number: '459-12-56' },
   { id: 'id-2', name: 'Doctor', number: '443-89-12' },
   { id: 'id-3', name: 'Anchous', number: '645-17-79' },
@@ -15,7 +15,7 @@ const contactsState = [
   { id: 'id-5', name: 'Asusena', number: '227-91-236' },
 ];
 
-const items = createReducer(contactsState, {
+const items = createReducer(defaultContacts, {
   [actions.addContact]: (state, action) => {
     if (
       state.find(cont => {
